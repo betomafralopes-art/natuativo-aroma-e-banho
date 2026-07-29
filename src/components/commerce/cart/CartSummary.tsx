@@ -51,9 +51,9 @@ Obrigado!
           Subtotal
         </span>
 
-        <span className="font-display text-[2.2rem] font-normal tracking-tight text-gold-600">
-          {formatCurrency(subtotal)}
-        </span>
+        <span className="font-sans text-[1.55rem] md:text-[2rem] font-medium tracking-tight text-gold-500">
+  {formatCurrency(subtotal)}
+</span>
       </div>
 
       <button

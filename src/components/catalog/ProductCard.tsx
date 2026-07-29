@@ -43,15 +43,15 @@ export default function ProductCard({
         shadow-sm
         transition-all
         duration-500
-        hover:-translate-y-2
-        hover:shadow-2xl
+        hover:-translate-y-1.5
+        hover:shadow-xl
       `}
     >
       <Link href={`/produto/${produto.slug ?? ''}`}>
 
         {/* FOTO */}
 
-        <div className="relative aspect-[4/5] overflow-hidden bg-[#faf7f2]">
+        <div className="relative aspect-[4/5] overflow-hidden bg-[#fcfaf7]">
 
           {produto.imagem_principal_url ? (
             <Image
@@ -59,7 +59,7 @@ export default function ProductCard({
               alt={produto.imagem_principal_alt || produto.nome || 'Produto'}
               fill
               sizes="(max-width:768px)100vw,25vw"
-              className="object-contain p-4 md:p-6 transition-all duration-700 group-hover:scale-105 group-hover:brightness-105"
+              className="object-contain p-3 md:p-4 transition-all duration-700 group-hover:scale-105 group-hover:brightness-105"
             />
           ) : (
             <div className="flex h-full items-center justify-center">
@@ -84,7 +84,7 @@ export default function ProductCard({
           {produto.lancamento && (
             <div className="absolute right-5 top-5">
 
-              <span className="rounded-full bg-gold-500 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-white">
+              <span className="rounded-full bg-gold-500 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-white">
 
                 Lançamento
 
@@ -117,38 +117,23 @@ export default function ProductCard({
 
       {/* CONTEÚDO */}
 
-      <div className="flex flex-col p-4 md:p-6">
+      <div className="flex flex-col px-5 pt-3 pb-4 md:px-5 md:pt-4 md:pb-5">
 
-        {produto.categoria_nome && (
-
-          <Link
-            href={`/catalogo?categoria=${produto.categoria_slug}`}
-            className="mb-4 w-fit rounded-full bg-gold-50 px-3 md:px-4 py-1 md:py-1.5 text-[11px] md:text-[12px] font-semibold uppercase tracking-[0.22em] text-gold-700 transition-all duration-300 hover:bg-gold-500 hover:text-white"
-          >
-
-            {produto.categoria_nome}
-
-          </Link>
-
-        )}
 
         <Link href={`/produto/${produto.slug ?? ''}`}>
 
-          <h3 className="min-h-[72px] md:min-h-[92px] font-sans text-[1.35rem] md:text-[2rem] font-normal leading-tight text-charcoal-900 transition-all duration-300 group-hover:text-gold-600">
-
+          <h3 className="min-h-[56px] md:min-h-[64px] font-sans text-[1rem] md:text-[1.3rem] font-normal leading-snug text-charcoal-900 transition-all duration-300 group-hover:text-gold-600">
             {produto.nome}
 
           </h3>
 
         </Link>
 
-        <div className="mt-5 md:mt-7 flex items-end gap-3">
+        <div className="mt-1 md:mt-2 flex items-end gap-2">
 
-          <span className="font-sans text-[1.8rem] md:text-4xl font-medium tracking-tight text-gold-500">
-
-            {formatCurrency(produto.preco ?? 0)}
-
-          </span>
+          <span className="font-sans text-[1.2rem] md:text-[1.55rem] font-medium tracking-tight text-gold-500">
+  {formatCurrency(produto.preco ?? 0)}
+</span>
 
           {temDesconto && (
 
@@ -163,12 +148,12 @@ export default function ProductCard({
         </div>
 
        <ProductCardActions
-  id={produto.id ?? ''}
-  nome={produto.nome ?? ''}
-  preco={produto.preco ?? 0}
-  imagem={produto.imagem_principal_url}
-  slug={produto.slug ?? ''}
-/>
+    id={produto.id ?? ''}
+    nome={produto.nome ?? ''}
+    preco={produto.preco ?? 0}
+    imagem={produto.imagem_principal_url}
+    slug={produto.slug ?? ''}
+  />
 
       </div>
     </div>

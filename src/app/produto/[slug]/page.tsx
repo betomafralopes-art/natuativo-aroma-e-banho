@@ -88,23 +88,15 @@ export default async function ProdutoPage({ params }: ProdutoPageProps) {
 
               {/* Info */}
               <div className="flex flex-col p-5 md:p-10">
-                {produto.categorias && (
-                  <Link
-                    href={`/catalogo?categoria=${(produto.categorias as { slug: string }).slug}`}
-                    className="mb-5 block w-fit font-sans text-[12px] font-semibold uppercase tracking-[0.22em] text-gold-700 transition-all duration-300 hover:text-gold-500"
-                  >
-                    {(produto.categorias as { nome: string }).nome}
-                  </Link>
-                )}
-
-                <h1 className="font-sans text-[1.8rem] leading-tight md:text-[2.6rem] font-normal leading-tight text-charcoal-900 mb-8">
-                 {produto.nome}
+                
+                <h1 className="font-sans text-[1.55rem] md:text-[2.15rem] font-normal leading-tight tracking-tight text-charcoal-900 mb-6">
+                  {produto.nome}
                 </h1>
 
                 {/* Price */}
                  <div className="flex items-baseline gap-3 mb-8">
-                 <span className="font-sans text-[2rem] md:text-5xl font-medium tracking-tight text-gold-500 leading-none">
-                 {formatCurrency(produto.preco)}
+                 <span className="font-sans text-[1.6rem] md:text-[2.2rem] font-medium tracking-tight text-gold-500 leading-none">
+                  {formatCurrency(produto.preco)}
                  </span>
 
                  {temDesconto && (
