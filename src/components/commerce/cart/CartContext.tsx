@@ -15,8 +15,9 @@ export interface CartContextType {
   itens: CartItem[]
 
   adicionarProduto: (
-    produto: Omit<CartItem, 'quantidade'>
-  ) => void
+  produto: Omit<CartItem, 'quantidade'>,
+  quantidade?: number
+) => void
 
   removerProduto: (id: string) => void
 

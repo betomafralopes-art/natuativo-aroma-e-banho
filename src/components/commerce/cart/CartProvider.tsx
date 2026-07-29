@@ -47,8 +47,9 @@ export default function CartProvider({
   }, [itens, carregado])
 
   function adicionarProduto(
-    produto: Omit<CartItem, 'quantidade'>
-  ) {
+  produto: Omit<CartItem, 'quantidade'>,
+  quantidade = 1
+) {
     setItens((estadoAtual) => {
       const existente = estadoAtual.find(
         (item) => item.id === produto.id
@@ -59,7 +60,7 @@ export default function CartProvider({
           item.id === produto.id
             ? {
                 ...item,
-                quantidade: item.quantidade + 1,
+                quantidade: item.quantidade + quantidade,
               }
             : item
         )
@@ -69,7 +70,7 @@ export default function CartProvider({
         ...estadoAtual,
         {
           ...produto,
-          quantidade: 1,
+          quantidade,
         },
       ]
     })

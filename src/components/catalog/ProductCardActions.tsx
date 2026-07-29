@@ -4,6 +4,8 @@ import Link from 'next/link'
 import { ShoppingCart, Eye } from 'lucide-react'
 import { toast } from 'react-hot-toast'
 import { useCart } from '@/components/commerce/cart/useCart'
+import { useState } from 'react'
+import QuantitySelector from '@/components/ui/QuantitySelector'
 
 interface ProductCardActionsProps {
   id: string
@@ -22,20 +24,36 @@ export default function ProductCardActions({
 }: ProductCardActionsProps) {
   const { adicionarProduto } = useCart()
 
+  const [quantidade, setQuantidade] = useState(1)
+
   function adicionarAoCarrinho() {
-    adicionarProduto({
+ adicionarProduto(
+    {
       id,
       nome,
       preco,
       imagem,
       slug,
-    })
+  },
+  quantidade
+)
 
-    toast.success(`${nome} adicionado ao carrinho`)
+    toast.success(
+  `${quantidade} ${
+    quantidade > 1 ? 'unidades' : 'unidade'
+  } de ${nome} adicionada${quantidade > 1 ? 's' : ''} ao carrinho`
+)
   }
 
   return (
-    <div className="mt-6 grid grid-cols-2 gap-3">
+  <div className="mt-6 space-y-3">
+
+    <QuantitySelector
+      quantidade={quantidade}
+      onChange={setQuantidade}
+    />
+
+    <div className="grid grid-cols-2 gap-3">
 
       <button
         onClick={adicionarAoCarrinho}
@@ -94,6 +112,8 @@ export default function ProductCardActions({
         <span>Detalhes</span>
       </Link>
 
-    </div>
-  )
+        </div>
+
+  </div>
+)
 }
