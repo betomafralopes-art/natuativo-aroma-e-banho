@@ -82,7 +82,7 @@ export default async function ProdutoPage({ params }: ProdutoPageProps) {
          nome={produto.nome}
          imagemPrincipal={produto.imagem_principal ?? null}
          imagens={produto.produto_imagens || []}
-          lancamento={produto.lancamento}
+          lancamento={produto.lancamento ?? false}
          />            
        
 
@@ -197,7 +197,7 @@ export default async function ProdutoPage({ params }: ProdutoPageProps) {
            id={produto.id}
            nome={produto.nome}
            preco={produto.preco}
-           imagem={produto.imagem_principal}
+           imagem={produto.imagem_principal ?? null}
            slug={params.slug}
           />
        

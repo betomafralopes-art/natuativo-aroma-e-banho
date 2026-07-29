@@ -5,7 +5,9 @@ import { useRouter } from 'next/navigation'
 import { Pencil, Trash2 } from 'lucide-react'
 import toast from 'react-hot-toast'
 
-import type { Categoria } from '@/types/database'
+import type { Database } from '@/types/database'
+
+type Categoria = Database['public']['Tables']['categorias']['Row']
 
 interface Props {
   categorias: Categoria[]

@@ -70,7 +70,9 @@ export async function getProdutoBySlug(slug: string): Promise<ProdutoComImagens 
   return {
   ...(data as any),
   imagem_principal: principal,
-  produto_imagens: imagens.sort((a, b) => a.ordem - b.ordem),
+  produto_imagens: imagens.sort(
+  (a, b) => (a.ordem ?? 0) - (b.ordem ?? 0)
+),
 } as ProdutoComImagens
 }
 
@@ -119,21 +121,33 @@ export async function getAdminProdutos(options?: {
   return data || []
 }
 
-export async function getAdminProdutoById(id: string) {
+export async function getAdminProdutoById(id: string): Promise<ProdutoComImagens | null> {
   const supabase = createAdminClient()
 
   const { data, error } = await supabase
-    .from('produtos')
-    .select(`
-      *,
-      categorias (*),
-      produto_imagens (*)
-    `)
-    .eq('id', id)
-    .single()
+  .from('produtos')
+  .select(`
+    *,
+    categorias (*),
+    produto_imagens (*)
+  `)
+  .eq('id', id)
+  .single()
 
-  if (error || !data) return null
-  return data
+if (error || !data) return null
+
+const imagens = ((data as any).produto_imagens as ProdutoImagem[]) || []
+
+const principal =
+  imagens.find((i) => i.principal)?.url ||
+  imagens[0]?.url ||
+  null
+
+return {
+  ...(data as any),
+  imagem_principal: principal,
+  produto_imagens: imagens.sort((a, b) => (a.ordem ?? 0) - (b.ordem ?? 0)),
+} as ProdutoComImagens
 }
 
 export async function createProduto(dados: {

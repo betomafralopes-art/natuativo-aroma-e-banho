@@ -25,8 +25,9 @@ export default function ProductCard({
   ][delay]
 
   const temDesconto =
-    produto.preco_original &&
-    produto.preco_original > produto.preco
+  produto.preco_original != null &&
+  produto.preco != null &&
+  produto.preco_original > produto.preco
 
   return (
     <div
@@ -46,7 +47,7 @@ export default function ProductCard({
         hover:shadow-2xl
       `}
     >
-      <Link href={`/produto/${produto.slug}`}>
+      <Link href={`/produto/${produto.slug ?? ''}`}>
 
         {/* FOTO */}
 
@@ -55,7 +56,7 @@ export default function ProductCard({
           {produto.imagem_principal_url ? (
             <Image
               src={produto.imagem_principal_url}
-              alt={produto.imagem_principal_alt || produto.nome}
+              alt={produto.imagem_principal_alt || produto.nome || 'Produto'}
               fill
               sizes="(max-width:768px)100vw,25vw"
               className="object-contain p-4 md:p-6 transition-all duration-700 group-hover:scale-105 group-hover:brightness-105"
@@ -99,10 +100,10 @@ export default function ProductCard({
               <span className="rounded-full bg-olive-600 px-3 py-1 text-xs font-semibold text-white">
 
                 -{Math.round(
-                  ((produto.preco_original! - produto.preco) /
-                    produto.preco_original!) *
-                    100
-                )}
+  ((produto.preco_original! - produto.preco!) /
+    produto.preco_original!) *
+    100
+)}
                 %
 
               </span>
@@ -131,7 +132,7 @@ export default function ProductCard({
 
         )}
 
-        <Link href={`/produto/${produto.slug}`}>
+        <Link href={`/produto/${produto.slug ?? ''}`}>
 
           <h3 className="min-h-[72px] md:min-h-[92px] font-sans text-[1.35rem] md:text-[2rem] font-normal leading-tight text-charcoal-900 transition-all duration-300 group-hover:text-gold-600">
 
@@ -145,7 +146,7 @@ export default function ProductCard({
 
           <span className="font-sans text-[1.8rem] md:text-4xl font-medium tracking-tight text-gold-500">
 
-            {formatCurrency(produto.preco)}
+            {formatCurrency(produto.preco ?? 0)}
 
           </span>
 
@@ -161,13 +162,13 @@ export default function ProductCard({
 
         </div>
 
-        <ProductCardActions
-       id={produto.id}
-       nome={produto.nome}
-       preco={produto.preco}
-       imagem={produto.imagem_principal_url}
-       slug={produto.slug}
-       />
+       <ProductCardActions
+  id={produto.id ?? ''}
+  nome={produto.nome ?? ''}
+  preco={produto.preco ?? 0}
+  imagem={produto.imagem_principal_url}
+  slug={produto.slug ?? ''}
+/>
 
       </div>
     </div>

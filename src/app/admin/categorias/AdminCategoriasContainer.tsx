@@ -2,7 +2,9 @@
 
 import { useState } from 'react'
 
-import type { Categoria } from '@/types/database'
+import type { Database } from '@/types/database'
+
+type Categoria = Database['public']['Tables']['categorias']['Row']
 
 import AdminCategoriasClient from './AdminCategoriasClient'
 import CategoriaForm from '@/components/admin/CategoriaForm'
