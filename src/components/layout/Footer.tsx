@@ -1,10 +1,8 @@
-import Link from 'next/link'
-
 export default function Footer() {
   return (
     <footer className="bg-charcoal-900 text-cream-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
-        <div className="grid grid-cols-1 gap-10 md:grid-cols-3 md:gap-12 mb-12">
+        <div className="flex flex-col md:flex-row justify-center gap-20 lg:gap-40 mb-12">
 
           {/* Brand */}
           <div>
@@ -17,33 +15,6 @@ export default function Footer() {
             <p className="font-body text-sm text-cream-400 leading-relaxed">
               Arte, aroma e cuidado em cada criação. Produtos artesanais que transformam o autocuidado em momentos de bem-estar.
             </p>
-          </div>
-
-          {/* Links */}
-          <div>
-            <h4 className="font-body text-xs font-semibold tracking-[0.15em] uppercase text-gold-400 mb-5">
-              Categorias
-            </h4>
-            <ul className="space-y-2.5">
-              {[
-                ['Sabonetes Artesanais', 'sabonetes-artesanais'],
-                ['Sabonetes Esotéricos', 'sabonetes-esotericos'],
-                ['Body Splash', 'body-splash'],
-                ['Aromatizadores', 'aromatizadores'],
-                ['Escalda-Pés', 'escalda-pes'],
-                ['Kits Presente', 'kits-presente'],
-                ['Linha Frutal', 'linha-frutal'],
-              ].map(([nome, slug]) => (
-                <li key={slug}>
-                  <Link
-                    href={`/catalogo?categoria=${slug}`}
-                    className="font-body text-sm text-cream-400 hover:text-gold-400 transition-colors"
-                  >
-                    {nome}
-                  </Link>
-                </li>
-              ))}
-            </ul>
           </div>
 
           {/* Contato */}

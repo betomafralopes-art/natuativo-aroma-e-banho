@@ -48,7 +48,7 @@ export default function Header() {
 
           {/* Desktop Nav */}
 
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden md:flex items-center gap-6 lg:gap-8">
 
             <Link
               href="/"
@@ -67,6 +67,13 @@ export default function Header() {
               className="font-body text-sm text-charcoal-600 hover:text-gold-500 transition-colors tracking-wide"
             >
               Lançamentos
+            </Link>
+
+            <Link
+              href="/quem-somos"
+              className="font-body text-sm text-charcoal-600 hover:text-gold-500 transition-colors tracking-wide"
+            >
+              Quem Somos
             </Link>
             <a
               href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '5548996350861'}?text=${encodeURIComponent('Olá! Gostaria de saber mais sobre os produtos da Natuativo Aroma & Banho.')}`}
@@ -131,6 +138,14 @@ export default function Header() {
             >
               Lançamentos
             </Link>
+            <Link
+              href="/quem-somos"
+              onClick={() => setMobileOpen(false)}
+              className="flex items-center h-12 font-body text-[15px] text-charcoal-700 hover:text-gold-500 transition-all duration-300 border-b border-cream-200"
+            >
+              Quem Somos
+            </Link>
+
             <a
               href="https://www.instagram.com/natuativoaromaebanho"
               target="_blank"

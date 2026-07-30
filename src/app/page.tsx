@@ -32,7 +32,10 @@ console.log(JSON.stringify(categorias, null, 2))
               </span>
               <h2>Categorias</h2>
               <div className="gold-divider mt-4 mb-5" />
-              <p>Cada linha criada com ingredientes naturais selecionados e muita dedicação.</p>
+              <p>
+                Produzido artesanalmente para transformar 
+                o cuidado diário em um ritual de bem-estar.
+              </p>
             </div>
 
 <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 lg:gap-6">

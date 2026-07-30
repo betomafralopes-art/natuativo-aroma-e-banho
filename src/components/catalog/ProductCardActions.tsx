@@ -53,11 +53,12 @@ export default function ProductCardActions({
       onChange={setQuantidade}
     />
 
-    <div className="grid grid-cols-2 gap-3">
+    <div className="flex flex-col gap-3 sm:grid sm:grid-cols-2">
 
       <button
         onClick={adicionarAoCarrinho}
         className="
+          w-full
           flex
           items-center
           justify-center
@@ -87,6 +88,7 @@ export default function ProductCardActions({
       <Link
         href={`/produto/${slug}`}
         className="
+          w-full
           flex
           items-center
           justify-center
